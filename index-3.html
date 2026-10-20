@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#16324f">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="JZ Civil Works">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icon-192.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<title>JZ Civil Works – Quotation & Invoice</title>
+<style>
+:root{--bg:#f4f5f7;--card:#fff;--tx:#17212b;--mu:#6a7684;--bd:#dde1e6;--pr:#16324f;--ac:#f28c28;--in:#fff;--on:#fff;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#10151b;--card:#1a212a;--tx:#e8ecf0;--mu:#93a0ad;--bd:#2b3540;--pr:#6fa3d6;--in:#121820;--on:#10151b}}
+:root[data-theme="dark"]{--bg:#10151b;--card:#1a212a;--tx:#e8ecf0;--mu:#93a0ad;--bd:#2b3540;--pr:#6fa3d6;--in:#121820;--on:#10151b}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--tx);font:15px/1.4 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+header{display:flex;align-items:center;gap:12px;padding:14px 16px;background:var(--card);border-bottom:1px solid var(--bd)}
+header h1{font-size:18px;margin:0}header small{color:var(--mu);display:block;font-size:12px}
+nav{display:flex;gap:6px;padding:10px 12px;position:sticky;top:env(safe-area-inset-top,0px);background:var(--bg);z-index:5}
+nav button{flex:1;padding:10px;border:1px solid var(--bd);background:var(--card);color:var(--tx);border-radius:10px;font-weight:600;font-size:14px}
+nav button.on{background:var(--pr);color:var(--on);border-color:var(--pr)}
+main{max-width:860px;margin:0 auto;padding:0 12px 40px}
+.card{background:var(--card);border:1px solid var(--bd);border-radius:14px;padding:14px;margin-bottom:12px}
+.card h2{font-size:15px;margin:0 0 10px;color:var(--pr)}
+.g{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.g .f{grid-column:1/-1}
+label{display:block;font-size:12px;color:var(--mu);margin-bottom:3px}
+input,select,textarea{width:100%;padding:10px;border:1px solid var(--bd);border-radius:8px;background:var(--in);color:var(--tx);font:inherit;min-width:0}
+textarea{min-height:60px;resize:vertical}
+.row{border:1px solid var(--bd);border-radius:10px;padding:10px;margin-bottom:10px;display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px}
+.row .w{grid-column:1/-1}.row .tot{font-weight:700;align-self:end;text-align:right;padding-bottom:10px}
+.x{background:none;border:0;color:#d33;font-size:13px;padding:4px}
+.btn{padding:12px 16px;border:0;border-radius:10px;font-weight:700;font-size:15px;background:var(--ac);color:#fff;width:100%}
+.btn.s{background:var(--pr);color:var(--on);width:auto;padding:10px 14px;font-size:14px}
+.sum{display:grid;grid-template-columns:1fr auto;gap:6px 12px;margin-top:6px}
+.sum b{text-align:right}.big{font-size:18px;color:var(--pr)}
+.pl{display:grid;grid-template-columns:1fr 70px 100px 28px;gap:6px;margin-bottom:6px;align-items:center}
+.cat{font-weight:700;margin:14px 0 6px;color:var(--pr)}
+.msg{position:fixed;left:12px;right:12px;bottom:calc(14px + env(safe-area-inset-bottom,0px));background:#16324f;color:#fff;padding:12px;border-radius:10px;text-align:center;z-index:9}
+.hide{display:none}.mu{color:var(--mu);font-size:12px}.red{color:#d33}.hc{border:1px solid var(--bd);border-radius:10px;padding:10px;margin-bottom:8px;cursor:pointer}.hc.sel{border:2px solid var(--ac)}.hd{border:1px solid var(--bd);border-radius:10px;padding:10px;margin-bottom:8px;display:flex;flex-wrap:wrap;justify-content:space-between;gap:6px}.ha{width:100%;display:flex;gap:6px;flex-wrap:wrap}.ha button{padding:7px 10px;border:1px solid var(--bd);background:var(--in);color:var(--tx);border-radius:8px;font-size:13px}.ha .d{color:#d33}
+#inst{display:flex;gap:8px;align-items:center;justify-content:space-between;padding:10px 14px;background:var(--pr);color:var(--on);font-size:14px}#inst button{border:0;border-radius:8px;padding:8px 12px;font-weight:700;background:var(--ac);color:#fff}#inst .c{background:none;color:inherit;font-size:18px;padding:4px 8px}.mu{color:var(--mu);font-size:12px}.red{color:#d33}.hc{border:1px solid var(--bd);border-radius:10px;padding:10px;margin-bottom:8px;cursor:pointer}.hc.sel{border:2px solid var(--ac)}.hd{border:1px solid var(--bd);border-radius:10px;padding:10px;margin-bottom:8px;display:flex;flex-wrap:wrap;justify-content:space-between;gap:6px}.ha{width:100%;display:flex;gap:6px;flex-wrap:wrap}.ha button{padding:7px 10px;border:1px solid var(--bd);background:var(--in);color:var(--tx);border-radius:8px;font-size:13px}.ha .d{color:#d33}
+</style>
+</head>
+<body>
+<header>
+  <svg id="lg" width="46" height="46" viewBox="0 0 64 64" aria-label="JZ Civil Works logo"><rect width="64" height="64" rx="12" fill="#16324f"/><g fill="#f28c28"><rect x="8" y="8" width="22" height="8" rx="1.5"/><rect x="33" y="8" width="23" height="8" rx="1.5"/><rect x="8" y="19" width="10" height="8" rx="1.5"/><rect x="21" y="19" width="22" height="8" rx="1.5"/><rect x="46" y="19" width="10" height="8" rx="1.5"/></g><text x="32" y="55" text-anchor="middle" font-family="Arial,sans-serif" font-weight="800" font-size="27" fill="#fff">JZ</text></svg>
+  <div><h1>JZ Civil Works</h1><small>Quotation &amp; Invoice Generator</small></div>
+  <select id="th" aria-label="Theme" style="width:auto;margin-left:auto"><option value="auto">🌗 Auto</option><option value="light">☀️ Light</option><option value="dark">🌙 Dark</option></select>
+</header>
+<div id="inst" class="hide"><span id="itx">Install JZ Civil Works on your phone</span><span><button id="ibt">Install</button><button class="c" id="icl" aria-label="Dismiss">✕</button></span></div>
+<nav><button id="t0" class="on">New</button><button id="t2">History</button><button id="t1">Price List</button></nav>
+<main>
+<section id="p0">
+  <div class="card"><h2>Document</h2>
+    <div class="g">
+      <div><label>Type</label><select id="type"><option value="Quotation">Quotation</option><option value="Invoice">Invoice</option></select></div>
+      <div><label>Number</label><input id="num"></div>
+      <div><label>Date</label><input id="date" type="date"></div>
+      <div><label id="dl">Valid until</label><input id="due" type="date"></div>
+    </div></div>
+  <div class="card"><h2>Client</h2>
+    <div class="g">
+      <div class="f"><label>Client name</label><input id="cn" list="cl" placeholder="e.g. Mr. Ibrahim"><datalist id="cl"></datalist></div>
+      <div><label>Phone</label><input id="cp" type="tel"></div>
+      <div><label>Project / site</label><input id="cs"></div>
+      <div class="f"><label>Client address</label><input id="ca"></div>
+    </div></div>
+  <div class="card"><h2>Items</h2><div id="rows"></div>
+    <button class="btn s" id="add">+ Add item</button></div>
+  <div class="card"><h2>Totals</h2>
+    <div class="g"><div><label>Discount (₦)</label><input id="disc" type="number" min="0" value="0"></div>
+    <div id="paidw" class="hide"><label>Amount paid (₦)</label><input id="paid" type="number" min="0" value="0"></div></div>
+    <div class="sum"><span>Subtotal</span><b id="sub">₦0</b><span>Discount</span><b id="dsp">₦0</b><span>Total</span><b id="tot" class="big">₦0</b><span id="bl" class="hide">Balance due</span><b id="bv" class="big hide">₦0</b></div>
+  </div>
+  <div class="card"><h2>Notes</h2><textarea id="notes" placeholder="e.g. 70% deposit before work begins"></textarea></div>
+  <div class="g"><button class="btn" id="pdf">Download PDF</button><button class="btn" id="img" style="background:#2e7d5b">Download Image</button><button class="btn" id="shr" style="background:var(--pr);grid-column:1/-1">Share…</button></div>
+  <div id="nx" class="card hide" style="margin-top:12px"></div>
+</section>
+<section id="p1" class="hide">
+  <div class="card"><h2>Add new service / supply item</h2>
+    <div class="g">
+      <div><label>Category</label><select id="nc"></select></div>
+      <div id="ncw" class="hide"><label>New category name</label><input id="ncn"></div>
+      <div class="f"><label>Item name</label><input id="nn" placeholder="e.g. Painting"></div>
+      <div><label>Unit</label><input id="nu" placeholder="m², ton, bag…"></div>
+      <div><label>Price (₦)</label><input id="np" type="number" min="0"></div>
+    </div><div style="margin-top:10px"><button class="btn s" id="ni">Add to list</button></div></div>
+  <div class="card"><h2>Edit names, units &amp; prices</h2><div id="pls"></div>
+    <small style="color:var(--mu)">Changes save automatically on this device. Existing items on the open document keep their price until re-selected.</small></div>
+  <div class="card"><h2>Business &amp; payment details</h2>
+    <label>Payment details (shown on invoices)</label><textarea id="bank" placeholder="Bank name, account name, account number"></textarea></div>
+</section>
+<section id="p2" class="hide">
+<div class="card"><h2>Search</h2><div class="g"><div class="f"><label>Client, document number or project</label><input id="hs"></div><div class="f"><label>Show</label><select id="hf"><option value="">All documents</option><option>Quotation</option><option>Invoice</option></select></div></div></div>
+<div class="card"><h2>Clients – tap one to see all their jobs</h2><div id="hcl"></div></div>
+<div class="card"><h2>Documents</h2><div id="hbar"></div><div id="hl"></div></div>
+<div class="card"><h2>Backup</h2><p class="mu">History is stored on this device only. Save a backup file now and then.</p><button class="btn s" id="exp">Export backup</button> <label class="btn s" style="display:inline-block;width:auto;margin:0">Import backup<input id="imp" type="file" accept=".json" class="hide"></label></div>
+</section>
+</main>
+<div id="msg" class="msg hide"></div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.8.2/jspdf.plugin.autotable.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+<script>
+const BIZ={name:"JZ Civil Works",phone:"08087197189",email:"coolj6858@gmail.com",addr:"Gauraka, Suleja, Niger State."};
+const S="Services",M="Material Supply";
+const DEF=[
+[S,"Plastering","m²",600],[S,"Brick laying – ground level (100 bricks)","100 bricks",10000],[S,"Brick laying – at height (80 bricks)","80 bricks",15000],
+[S,"Tiling 60x60cm","m²",2500],[S,"Tiling 120x90cm","m²",5000],[S,"Tiling 25x40cm","m²",1200],[S,"Tiling 40x40cm","m²",1500],[S,"Tiling 30x60cm","m²",2000],
+[S,"Inspection chamber","chamber",5000],[S,"Door installation 120x200cm","door",10000],[S,"Door installation 90x210cm","door",8000],
+[S,"Burglary installation","burglary",3000],[S,"Window dressing","window",5000],[S,"Lintel casting","metre",1500],[S,"Window hook","window",5000],
+[S,"Flooring","m²",3000],[S,"Casting of copping","metre",2500],[S,"Labourer / support worker","person",5000],[S,"Labourer / support worker (casting)","person",7000],
+[M,"Sharp sand","ton",6000],[M,"Plaster sand","ton",5000],[M,"Gravel","ton",15500],[M,"Cement","bag",12000]];
+const $=id=>document.getElementById(id);
+const ls={get(k,d){try{const v=localStorage.getItem(k);return v?JSON.parse(v):d}catch(e){return d}},set(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}};
+let cat=ls.get("jz_cat",null)||DEF.map((d,i)=>({id:"c"+i,cat:d[0],name:d[1],unit:d[2],price:d[3]}));
+let cnt=ls.get("jz_cnt",{Quotation:1,Invoice:1});
+let rows=[{cid:"",desc:"",unit:"",qty:1,price:0}];
+const fmt=n=>(Number(n)||0).toLocaleString("en-NG",{maximumFractionDigits:2});
+const esc=s=>String(s??"").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const cats=()=>[...new Set(cat.map(c=>c.cat))];
+const saveCat=()=>ls.set("jz_cat",cat);
+function toast(t){const m=$("msg");m.textContent=t;m.classList.remove("hide");setTimeout(()=>m.classList.add("hide"),3500)}
+function nextNum(){const t=$("type").value;return (t==="Invoice"?"JZ-INV-":"JZ-QUO-")+String(cnt[t]).padStart(4,"0")}
+function setType(){const inv=$("type").value==="Invoice";$("dl").textContent=inv?"Due date":"Valid until";$("paidw").classList.toggle("hide",!inv);["bl","bv"].forEach(i=>$(i).classList.toggle("hide",!inv));$("num").value=nextNum();$("pdf").textContent="Download "+$("type").value+" PDF";$("img").textContent="Download "+$("type").value+" Image";calc()}
+function opts(sel){let h='<option value="">Select item…</option>';cats().forEach(c=>{h+=`<optgroup label="${esc(c)}">`+cat.filter(x=>x.cat===c).map(x=>`<option value="${x.id}"${x.id===sel?" selected":""}>${esc(x.name)} – ₦${fmt(x.price)}</option>`).join("")+"</optgroup>"});return h+`<option value="custom"${sel==="custom"?" selected":""}>Custom item…</option>`}
+function drawRows(){$("rows").innerHTML=rows.map((r,i)=>`<div class="row" data-i="${i}"><div class="w"><label>Item</label><select data-f="cid">${opts(r.cid)}</select></div>
+<div class="w"><label>Description</label><input data-f="desc" value="${esc(r.desc)}"></div>
+<div><label>Unit</label><input data-f="unit" value="${esc(r.unit)}"></div><div><label>Qty</label><input data-f="qty" type="number" min="0" step="any" value="${r.qty}"></div><div><label>Price (₦)</label><input data-f="price" type="number" min="0" step="any" value="${r.price}"></div>
+<div class="w" style="display:flex;justify-content:space-between;align-items:center"><button class="x" data-del="${i}">Remove</button><span class="tot" id="rt${i}" style="padding:0">₦${fmt(r.qty*r.price)}</span></div></div>`).join("")}
+function calc(){let s=0;rows.forEach((r,i)=>{const t=(+r.qty||0)*(+r.price||0);s+=t;const e=$("rt"+i);if(e)e.textContent="₦"+fmt(t)});
+const d=Math.min(+$("disc").value||0,s),tot=s-d;$("sub").textContent="₦"+fmt(s);$("dsp").textContent="₦"+fmt(d);$("tot").textContent="₦"+fmt(tot);$("bv").textContent="₦"+fmt(tot-(+$("paid").value||0));return{s,d,tot}}
+$("rows").addEventListener("input",e=>{const f=e.target.dataset.f,i=e.target.closest(".row")?.dataset.i;if(!f||f==="cid")return;rows[i][f]=e.target.value;calc()});
+$("rows").addEventListener("change",e=>{if(e.target.dataset.f!=="cid")return;const i=e.target.closest(".row").dataset.i,v=e.target.value,r=rows[i];r.cid=v;const c=cat.find(x=>x.id===v);if(c){r.desc=c.name;r.unit=c.unit;r.price=c.price}else if(v==="custom"){r.desc="";r.unit="";r.price=0}drawRows();calc()});
+$("rows").addEventListener("click",e=>{const d=e.target.dataset.del;if(d===undefined)return;rows.splice(d,1);if(!rows.length)rows.push({cid:"",desc:"",unit:"",qty:1,price:0});drawRows();calc()});
+$("add").onclick=()=>{rows.push({cid:"",desc:"",unit:"",qty:1,price:0});drawRows()};
+["disc","paid"].forEach(i=>$(i).addEventListener("input",calc));
+$("type").onchange=setType;
+function tab(n){[0,1,2].forEach(i=>{$("p"+i).classList.toggle("hide",i!==n);$("t"+i).classList.toggle("on",i===n)});if(n===0)drawRows();if(n===2)drawHist()}
+$("t0").onclick=()=>tab(0);$("t1").onclick=()=>tab(1);$("t2").onclick=()=>tab(2);
+/* price list */
+function drawPL(){let h="";cats().forEach(c=>{h+=`<div class="cat">${esc(c)}</div>`+cat.filter(x=>x.cat===c).map(x=>`<div class="pl" data-id="${x.id}"><input data-k="name" value="${esc(x.name)}"><input data-k="unit" value="${esc(x.unit)}"><input data-k="price" type="number" min="0" value="${x.price}"><button class="x" data-rm="${x.id}" aria-label="Delete">✕</button></div>`).join("")});$("pls").innerHTML=h;
+$("nc").innerHTML=cats().map(c=>`<option>${esc(c)}</option>`).join("")+'<option value="__new">+ New category…</option>'}
+$("pls").addEventListener("input",e=>{const k=e.target.dataset.k;if(!k)return;const it=cat.find(x=>x.id===e.target.closest(".pl").dataset.id);it[k]=k==="price"?(+e.target.value||0):e.target.value;saveCat()});
+$("pls").addEventListener("click",e=>{const id=e.target.dataset.rm;if(!id)return;const it=cat.find(x=>x.id===id);if(!confirm("Delete “"+it.name+"”?"))return;cat=cat.filter(x=>x.id!==id);saveCat();drawPL()});
+$("nc").onchange=()=>$("ncw").classList.toggle("hide",$("nc").value!=="__new");
+$("ni").onclick=()=>{let c=$("nc").value;if(c==="__new")c=$("ncn").value.trim();const n=$("nn").value.trim();if(!c||!n)return toast("Enter a category and item name");
+cat.push({id:"c"+Date.now(),cat:c,name:n,unit:$("nu").value.trim()||"unit",price:+$("np").value||0});saveCat();["nn","nu","np","ncn"].forEach(i=>$(i).value="");$("ncw").classList.add("hide");drawPL();toast("Item added")};
+$("bank").value=ls.get("jz_bank","")||"Bank: Access Bank\nAccount number: 0046369743\nAccount name: Zezo John Tarkule";$("bank").addEventListener("input",()=>ls.set("jz_bank",$("bank").value));
+/* PDF */
+function logo(d,x,y,s){const k=s/64;d.setFillColor(22,50,79);d.roundedRect(x,y,s,s,12*k,12*k,"F");d.setFillColor(242,140,40);
+[[8,8,22],[33,8,23],[8,19,10],[21,19,22],[46,19,10]].forEach(b=>d.roundedRect(x+b[0]*k,y+b[1]*k,b[2]*k,8*k,1.5*k,1.5*k,"F"));
+d.setTextColor(255,255,255);d.setFont("helvetica","bold");d.setFontSize(27*k*2.83);d.text("JZ",x+32*k,y+55*k,{align:"center"})}
+const dt=v=>v?new Date(v+"T00:00:00").toLocaleDateString("en-GB",{day:"2-digit",month:"short",year:"numeric"}):"-";
+async function makePDF(mode){
+ const items=rows.filter(r=>(r.desc||"").trim());if(!items.length)return toast("Add at least one item");
+ const {jsPDF}=window.jspdf;const d=new jsPDF({unit:"mm",format:"a4"});const t=$("type").value,inv=t==="Invoice",W=210,R=196;
+ logo(d,14,12,24);d.setTextColor(22,50,79);d.setFont("helvetica","bold");d.setFontSize(17);d.text(BIZ.name.toUpperCase(),42,20);
+ d.setFont("helvetica","normal");d.setFontSize(9);d.setTextColor(90,100,112);d.text("Civil Construction Services & Supply of Materials",42,25);d.text(BIZ.addr,42,30);d.text("Tel: "+BIZ.phone+"  |  "+BIZ.email,42,35);
+ d.setFont("helvetica","bold");d.setFontSize(20);d.setTextColor(242,140,40);d.text(t.toUpperCase(),R,48,{align:"right"});
+ d.setDrawColor(22,50,79);d.setLineWidth(.6);d.line(14,41,R,41);
+ d.setFontSize(9.5);d.setTextColor(23,33,43);d.setFont("helvetica","bold");d.text("BILL TO",14,52);d.setFont("helvetica","normal");
+ let y=57;[$("cn").value||"-",$("cp").value&&"Tel: "+$("cp").value,$("ca").value,$("cs").value&&"Project: "+$("cs").value].filter(Boolean).forEach(l=>{d.text(String(l),14,y);y+=5});
+ d.setFont("helvetica","bold");d.text(t+" No:",130,57);d.text("Date:",130,62);d.text((inv?"Due date:":"Valid until:"),130,67);
+ d.setFont("helvetica","normal");d.text($("num").value,R,57,{align:"right"});d.text(dt($("date").value),R,62,{align:"right"});d.text(dt($("due").value),R,67,{align:"right"});
+ d.autoTable({startY:Math.max(y,72)+4,head:[["#","Description","Unit","Qty","Unit price (NGN)","Amount (NGN)"]],
+  body:items.map((r,i)=>[i+1,r.desc,r.unit,fmt(r.qty),fmt(r.price),fmt(r.qty*r.price)]),theme:"striped",
+  headStyles:{fillColor:[22,50,79],textColor:255,fontSize:9},styles:{fontSize:9,cellPadding:2.2},alternateRowStyles:{fillColor:[245,246,248]},
+  columnStyles:{0:{cellWidth:9},2:{cellWidth:24},3:{halign:"right",cellWidth:16},4:{halign:"right",cellWidth:32},5:{halign:"right",cellWidth:32}},margin:{left:14,right:14}});
+ const c=calc();let fy=d.lastAutoTable.finalY+8;if(fy>235){d.addPage();fy=20}
+ const line=(l,v,b,big)=>{d.setFont("helvetica",b?"bold":"normal");d.setFontSize(big?12:10);d.setTextColor(big?22:23,big?50:33,big?79:43);d.text(l,128,fy);d.text("NGN "+fmt(v),R,fy,{align:"right"});fy+=big?8:6};
+ line("Subtotal",c.s);if(c.d)line("Discount",-c.d);line("TOTAL",c.tot,true,true);
+ if(inv){const p=+$("paid").value||0;if(p)line("Amount paid",p);line("BALANCE DUE",c.tot-p,true,true)}
+ d.setTextColor(23,33,43);d.setFontSize(9.5);const wr=(h,tx)=>{if(!tx.trim())return;if(fy>260){d.addPage();fy=20}d.setFont("helvetica","bold");d.text(h,14,fy);d.setFont("helvetica","normal");const ls2=d.splitTextToSize(tx,R-14);d.text(ls2,14,fy+5);fy+=6+ls2.length*4.6+3};
+ fy+=4;wr("Notes",$("notes").value);if(inv)wr("Payment details",$("bank").value);
+ const pg=d.getNumberOfPages();for(let i=1;i<=pg;i++){d.setPage(i);d.setDrawColor(242,140,40);d.setLineWidth(.8);d.line(14,284,R,284);d.setFont("helvetica","italic");d.setFontSize(9);d.setTextColor(90,100,112);d.text("Thank you for your business – "+BIZ.name+" | "+BIZ.phone,W/2,289,{align:"center"})}
+ const fn=$("num").value.replace(/[^\w-]/g,"")+(($("cn").value.trim())?"_"+$("cn").value.trim().replace(/[^\w]+/g,"_"):"")+".pdf";
+ const buf=d.output("arraybuffer");let ok=false;if(mode==="share"){ok=await shareDoc(d,fn,buf)}else if(mode==="img"){toast("Creating image…");try{ok=await imgDoc(fn,buf)}catch(e){toast("Image error: "+(e.message||e))}}else
+ try{const dl=null;if(dl){await dl.save({filename:fn,data:buf});ok=true}else{d.save(fn);ok=true}}
+ catch(e){if(e&&e.code==="declined")return toast("Download cancelled");try{d.save(fn);ok=true}catch(_){toast("Could not save the PDF here")}}
+ if(ok){const num=$("num").value;saveHist(c);showNx(num,t,c);if(num===nextNum()){cnt[t]++;ls.set("jz_cnt",cnt);$("num").value=nextNum()}toast(t+(mode==="img"?" image":" PDF")+" ready & saved to History")}
+}
+$("pdf").onclick=()=>makePDF().catch(e=>toast("PDF error: "+(e.message||e)));
+$("shr").onclick=()=>makePDF("share").catch(e=>toast("PDF error: "+(e.message||e)));
+$("img").onclick=()=>makePDF("img").catch(e=>toast("Image error: "+(e.message||e)));
+async function imgDoc(fn,buf){if(!window.pdfjsLib)throw new Error("image tool not loaded, check internet");
+pdfjsLib.GlobalWorkerOptions.workerSrc="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js";
+const pdf=await pdfjsLib.getDocument({data:new Uint8Array(buf.slice(0))}).promise,cs=[];
+for(let i=1;i<=pdf.numPages;i++){const pg=await pdf.getPage(i),vp=pg.getViewport({scale:2.5}),c=document.createElement("canvas");c.width=vp.width;c.height=vp.height;const x=c.getContext("2d");x.fillStyle="#fff";x.fillRect(0,0,c.width,c.height);await pg.render({canvasContext:x,viewport:vp}).promise;cs.push(c)}
+const o=document.createElement("canvas");o.width=cs[0].width;o.height=cs.reduce((a,c)=>a+c.height,0);const ox=o.getContext("2d");let y=0;cs.forEach(c=>{ox.drawImage(c,0,y);y+=c.height});
+const b=await new Promise(r=>o.toBlob(r,"image/png"));return await saveFile(fn.replace(/\.pdf$/,".png"),await b.arrayBuffer())}
+function shMsg(num,t,c){const nm=$("cn").value.trim();return t+" "+num+" from "+BIZ.name+(nm?" for "+nm:"")+". Total: NGN "+fmt(c.tot)+". Contact: "+BIZ.phone}
+async function shareDoc(d,fn,buf){const t=$("type").value,c=calc(),f=new File([buf],fn,{type:"application/pdf"});
+if(navigator.canShare&&navigator.canShare({files:[f]})){try{await navigator.share({files:[f],title:fn,text:shMsg($("num").value,t,c)});return true}catch(e){if(e&&e.name==="AbortError"){toast("Share cancelled");return false}}}
+toast("Sharing isn’t available here, so the PDF is downloading instead. Attach it in WhatsApp or email.");return await saveFile(fn,buf,d)}
+function showNx(num,t,c){const m=shMsg(num,t,c),ph=$("cp").value.replace(/\D/g,"").replace(/^0/,"234"),st="text-decoration:none;display:inline-block;margin:0 6px 6px 0";
+$("nx").innerHTML='<h2>Send to client</h2><p class="mu">Open a chat or email below, then attach the PDF you just saved.</p><a class="btn s" style="'+st+'" target="_blank" rel="noopener" href="https://wa.me/'+ph+'?text='+encodeURIComponent(m)+'">WhatsApp</a><a class="btn s" style="'+st+'" target="_blank" rel="noopener" href="mailto:?subject='+encodeURIComponent(t+" "+num+" – "+BIZ.name)+'&body='+encodeURIComponent(m+"\n\n"+BIZ.name)+'">Email</a>';$("nx").classList.remove("hide")}
+/* history */
+let hist=ls.get("jz_hist",[]),selC=null;
+const ck=h=>(h.cn||"").trim().toLowerCase()||"(no name)";
+const saveH=()=>ls.set("jz_hist",hist);
+function saveHist(c){const t=$("type").value,inv=t==="Invoice",num=$("num").value;hist=hist.filter(h=>h.num!==num);
+hist.unshift({num,type:t,date:$("date").value,due:$("due").value,cn:$("cn").value.trim(),cp:$("cp").value,ca:$("ca").value,cs:$("cs").value,rows:rows.filter(r=>(r.desc||"").trim()).map(r=>({...r})),disc:+$("disc").value||0,notes:$("notes").value,total:c.tot,pd:inv?Math.min(c.tot,+$("paid").value||0):0,ts:Date.now()});saveH();fillDL()}
+function fillDL(){const n=[...new Set(hist.map(h=>h.cn).filter(Boolean))];$("cl").innerHTML=n.map(x=>`<option value="${esc(x)}">`).join("")}
+$("cn").addEventListener("change",()=>{const k=$("cn").value.trim().toLowerCase(),h=hist.find(x=>ck(x)===k);if(h){if(!$("cp").value)$("cp").value=h.cp||"";if(!$("ca").value)$("ca").value=h.ca||""}});
+function stats(l){const iv=l.filter(h=>h.type==="Invoice"),inv=iv.reduce((a,h)=>a+h.total,0),pd=iv.reduce((a,h)=>a+h.pd,0);return{n:l.length,inv,pd,out:inv-pd,q:l.filter(h=>h.type==="Quotation").reduce((a,h)=>a+h.total,0)}}
+function drawHist(){const q=$("hs").value.trim().toLowerCase(),f=$("hf").value,g={};
+hist.forEach(h=>{(g[ck(h)]=g[ck(h)]||{name:h.cn||"(no name)",l:[]}).l.push(h)});
+let c="";Object.entries(g).forEach(([k,x])=>{if(q&&!x.name.toLowerCase().includes(q))return;const s=stats(x.l);c+=`<div class="hc${selC===k?" sel":""}" data-ck="${esc(k)}"><b>${esc(x.name)}</b> <span class="mu">${s.n} doc${s.n>1?"s":""}</span><div class="mu">Invoiced ₦${fmt(s.inv)} · Paid ₦${fmt(s.pd)} · <b class="${s.out>0?"red":""}">Owing ₦${fmt(s.out)}</b>${s.q?" · Quoted ₦"+fmt(s.q):""}</div></div>`});
+$("hcl").innerHTML=c||'<p class="mu">No saved clients yet. Documents are saved here each time you download a PDF.</p>';
+$("hbar").innerHTML=selC?`<p>Showing: <b>${esc(g[selC]?g[selC].name:selC)}</b></p><button class="btn s" id="stm">Client statement PDF</button> <button class="btn s" id="clr" style="background:var(--mu)">Show all</button><div style="height:10px"></div>`:"";
+const l=hist.filter(h=>(!selC||ck(h)===selC)&&(!f||h.type===f)&&(!q||(h.cn+h.num+h.cs).toLowerCase().includes(q)));
+$("hl").innerHTML=l.map(h=>{const inv=h.type==="Invoice",b=h.total-h.pd;return `<div class="hd" data-n="${esc(h.num)}"><div><b>${esc(h.num)}</b> · ${h.type} · ${dt(h.date)}<div class="mu">${esc(h.cn||"(no name)")}${h.cs?" · "+esc(h.cs):""}</div></div><div style="text-align:right"><b>₦${fmt(h.total)}</b>${inv?`<div class="mu ${b>0?"red":""}">${b>0?"Balance ₦"+fmt(b):"Paid in full"}</div>`:""}</div><div class="ha"><button data-a="open">Open</button>${inv?(b>0?'<button data-a="pay">Record payment</button>':""):'<button data-a="conv">Make invoice</button>'}<button class="d" data-a="del">Delete</button></div></div>`}).join("")||'<p class="mu">Nothing to show.</p>'}
+function loadDoc(h,conv){const x=new Date();x.setDate(x.getDate()+14);$("type").value=conv?"Invoice":h.type;setType();if(!conv)$("num").value=h.num;
+$("date").value=conv?iso(new Date()):h.date;$("due").value=conv?iso(x):h.due;$("cn").value=h.cn;$("cp").value=h.cp;$("ca").value=h.ca;$("cs").value=h.cs;$("disc").value=h.disc;$("paid").value=conv?0:h.pd;$("notes").value=h.notes;
+rows=JSON.parse(JSON.stringify(h.rows));drawRows();calc();tab(0);window.scrollTo(0,0)}
+$("p2").addEventListener("click",e=>{const cc=e.target.closest("[data-ck]");if(cc){selC=selC===cc.dataset.ck?null:cc.dataset.ck;return drawHist()}
+if(e.target.id==="clr"){selC=null;return drawHist()}if(e.target.id==="stm")return statement().catch(x=>toast("PDF error: "+(x.message||x)));
+const a=e.target.dataset.a;if(!a)return;const h=hist.find(z=>z.num===e.target.closest(".hd").dataset.n);if(!h)return;
+if(a==="open")loadDoc(h,false);else if(a==="conv")loadDoc(h,true);
+else if(a==="pay"){const v=parseFloat(prompt("Payment received (₦)",h.total-h.pd));if(v>0){h.pd=Math.min(h.total,h.pd+v);saveH();drawHist()}}
+else if(a==="del"&&confirm("Delete "+h.num+"?")){hist=hist.filter(z=>z!==h);saveH();fillDL();drawHist()}});
+$("hs").addEventListener("input",drawHist);$("hf").onchange=drawHist;
+async function saveFile(fn,data,doc){try{const dl=null;if(dl){await dl.save({filename:fn,data});return true}}catch(e){if(e&&e.code==="declined"){toast("Download cancelled");return false}}
+try{if(doc)doc.save(fn);else{const a=document.createElement("a");a.href=URL.createObjectURL(new Blob([data]));a.download=fn;a.click()}return true}catch(_){toast("Could not save here");return false}}
+$("exp").onclick=()=>saveFile("JZ-Civil-Works-backup.json",JSON.stringify({hist,cat,cnt,bank:$("bank").value}));
+$("imp").onchange=e=>{const f=e.target.files[0];if(!f)return;const r=new FileReader();r.onload=()=>{try{const o=JSON.parse(r.result);if(!Array.isArray(o.hist)||!confirm("Replace current history and price list with this backup?"))return;hist=o.hist;if(o.cat)cat=o.cat;if(o.cnt)cnt=o.cnt;if(o.bank){$("bank").value=o.bank;ls.set("jz_bank",o.bank)}saveH();saveCat();ls.set("jz_cnt",cnt);fillDL();drawPL();drawHist();setType();toast("Backup restored")}catch(_){toast("Invalid backup file")}};r.readAsText(f)};
+async function statement(){const k=selC,l=hist.filter(h=>ck(h)===k).sort((a,b)=>a.date<b.date?-1:1);if(!l.length)return;
+const {jsPDF}=window.jspdf,d=new jsPDF({unit:"mm",format:"a4"}),R=196,s=stats(l),nm=l[0].cn||"(no name)";
+logo(d,14,12,24);d.setTextColor(22,50,79);d.setFont("helvetica","bold");d.setFontSize(17);d.text(BIZ.name.toUpperCase(),42,20);
+d.setFont("helvetica","normal");d.setFontSize(9);d.setTextColor(90,100,112);d.text("Civil Construction Services & Supply of Materials",42,25);d.text(BIZ.addr,42,30);d.text("Tel: "+BIZ.phone+"  |  "+BIZ.email,42,35);
+d.setFont("helvetica","bold");d.setFontSize(18);d.setTextColor(242,140,40);d.text("CLIENT STATEMENT",R,48,{align:"right"});d.setDrawColor(22,50,79);d.setLineWidth(.6);d.line(14,41,R,41);
+d.setFontSize(9.5);d.setTextColor(23,33,43);d.text("CLIENT",14,52);d.setFont("helvetica","normal");d.text(nm,14,57);if(l[0].cp)d.text("Tel: "+l[0].cp,14,62);d.text("Statement date: "+dt(iso(new Date())),R,57,{align:"right"});
+d.autoTable({startY:68,head:[["Date","Document","Type","Project","Total (NGN)","Paid (NGN)","Balance (NGN)"]],body:l.map(h=>{const i=h.type==="Invoice";return [dt(h.date),h.num,h.type,h.cs||"-",fmt(h.total),i?fmt(h.pd):"-",i?fmt(h.total-h.pd):"-"]}),
+headStyles:{fillColor:[22,50,79],textColor:255,fontSize:9},styles:{fontSize:8.5,cellPadding:2.2},alternateRowStyles:{fillColor:[245,246,248]},columnStyles:{4:{halign:"right"},5:{halign:"right"},6:{halign:"right"}},margin:{left:14,right:14}});
+let y=d.lastAutoTable.finalY+8;if(y>235){d.addPage();y=20}
+const ln=(a,v,b)=>{d.setFont("helvetica",b?"bold":"normal");d.setFontSize(b?12:10);d.setTextColor(b?22:23,b?50:33,b?79:43);d.text(a,118,y);d.text("NGN "+fmt(v),R,y,{align:"right"});y+=b?8:6};
+ln("Total invoiced",s.inv);ln("Total paid",s.pd);ln("BALANCE OWING",s.out,true);if(s.q)ln("Quoted (not counted above)",s.q);
+const bk=$("bank").value.trim();if(bk){y+=6;if(y>255){d.addPage();y=20}d.setTextColor(23,33,43);d.setFont("helvetica","bold");d.setFontSize(9.5);d.text("Payment details",14,y);d.setFont("helvetica","normal");d.text(d.splitTextToSize(bk,R-14),14,y+5)}
+const pg=d.getNumberOfPages();for(let i=1;i<=pg;i++){d.setPage(i);d.setDrawColor(242,140,40);d.setLineWidth(.8);d.line(14,284,R,284);d.setFont("helvetica","italic");d.setFontSize(9);d.setTextColor(90,100,112);d.text("Thank you for your business – "+BIZ.name+" | "+BIZ.phone,105,289,{align:"center"})}
+if(await saveFile("Statement_"+nm.replace(/[^\w]+/g,"_")+".pdf",d.output("arraybuffer"),d))toast("Statement ready")}
+function applyTh(v){const r=document.documentElement;if(v==="light"||v==="dark")r.setAttribute("data-theme",v);else r.removeAttribute("data-theme")}
+$("th").value=ls.get("jz_theme","auto");applyTh($("th").value);$("th").onchange=()=>{ls.set("jz_theme",$("th").value);applyTh($("th").value)};
+/* PWA install + offline */
+let dip=null;const inst=$("inst"),standalone=matchMedia("(display-mode: standalone)").matches||navigator.standalone;
+const hideI=()=>{inst.classList.add("hide");ls.set("jz_inst_off",Date.now())};
+window.addEventListener("beforeinstallprompt",e=>{e.preventDefault();dip=e;if(!standalone)inst.classList.remove("hide")});
+$("ibt").onclick=async()=>{if(dip){dip.prompt();await dip.userChoice;dip=null;inst.classList.add("hide")}else toast("Use your browser menu: Add to Home screen")};
+$("icl").onclick=hideI;
+window.addEventListener("appinstalled",()=>{inst.classList.add("hide");toast("App installed")});
+if(!standalone&&/iphone|ipad|ipod/i.test(navigator.userAgent)&&!ls.get("jz_inst_off",0)){$("itx").textContent="To install: tap Share, then Add to Home Screen";$("ibt").classList.add("hide");inst.classList.remove("hide")}
+if("serviceWorker"in navigator)addEventListener("load",()=>navigator.serviceWorker.register("sw.js").catch(()=>{}));
+/* init */
+const td=new Date(),p=n=>String(n).padStart(2,"0"),iso=x=>x.getFullYear()+"-"+p(x.getMonth()+1)+"-"+p(x.getDate());
+$("date").value=iso(td);const du=new Date(td);du.setDate(du.getDate()+14);$("due").value=iso(du);
+drawPL();setType();drawRows();calc();fillDL();
+</script>
+</body>
+</html>
